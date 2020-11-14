@@ -1,9 +1,9 @@
-import {Router} from 'express';
-import * as coursesController from '../controllers/courses.controller'
+import { Router } from 'express';
+import * as coursesController from '../controllers/courses.controller';
 
 const router = Router();
 
-const someFunction = () => {}
+const someFunction = () => {};
 
 router.get('/courses', coursesController.getCourses);
 router.get('/courses/:id', coursesController.getCourse);

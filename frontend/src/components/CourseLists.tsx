@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
+
 import CourseItem from './CourseItem';
+import Course from '../interfaces/Course';
 
 const CourseLists = () => {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     const getCourses = async () => {
@@ -16,11 +19,15 @@ const CourseLists = () => {
 
   return (
     <section>
-      <h1 className="my-3">Cursos</h1>
+      <h1>Cursos disponibles</h1>
 
-      {courses.map(course => (
-        <CourseItem {...course} />
-      ))}
+      <Row>
+        {courses.map(course => (
+          <Col key={course._id} md={4}>
+            <CourseItem {...course} />
+          </Col>
+        ))}
+      </Row>
     </section>
   );
 };

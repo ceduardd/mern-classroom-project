@@ -1,7 +1,7 @@
 const courses = [
   {
     name: 'Curso de Node',
-    image: '/images/users/pedro-perez.jpg',
+    image: '/images/node.jpg',
     description: 'Curso de introducción a Node',
     category: 'Backend',
     lessons: [
@@ -14,7 +14,7 @@ const courses = [
   },
   {
     name: 'Curso de React',
-    image: '/images/users/pedro-perez.jpg',
+    image: '/images/react.png',
     description: 'Curso de introducción a React',
     category: 'Frontend',
     lessons: [
@@ -28,7 +28,7 @@ const courses = [
   },
   {
     name: 'Curso de Vue',
-    image: '/images/users/pedro-perez.jpg',
+    image: '/images/vue.jpg',
     description: 'Curso de introducción a Vue',
     category: 'Frontend',
     lessons: [
