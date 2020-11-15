@@ -1,6 +1,9 @@
 import app from './app';
+import config from './config';
 import './database';
 
-app.listen(4000, () => {
-  console.log('Server running on port 4000');
+app.listen(config.PORT, () => {
+  console.log(
+    `Server running in ${config.NODE_ENV} mode on port: ${config.PORT}`
+  );
 });

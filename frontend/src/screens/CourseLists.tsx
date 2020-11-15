@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-import CourseItem from './CourseItem';
+import CourseItem from '../components/CourseItem';
 import Course from '../interfaces/Course';
 
 const CourseLists = () => {
@@ -10,7 +10,7 @@ const CourseLists = () => {
 
   useEffect(() => {
     const getCourses = async () => {
-      const { data } = await axios.get('http://localhost:4000/courses');
+      const { data } = await axios.get('http://localhost:5000/api/courses');
       setCourses(data);
     };
 

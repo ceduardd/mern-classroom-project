@@ -1,10 +1,11 @@
 import React from 'react';
-import CourseLists from './components/CourseLists';
+import CourseLists from './screens/CourseLists';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignIn from './screens/SignIn';
 
 const ClassroomApp = () => {
   return (
@@ -12,7 +13,8 @@ const ClassroomApp = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <CourseLists />
+          <Route path="/" component={CourseLists} exact />
+          <Route path="/login" component={SignIn} />
         </Container>
       </main>
       <Footer />

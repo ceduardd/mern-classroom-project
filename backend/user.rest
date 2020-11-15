@@ -1,0 +1,9 @@
+@uri = http://localhost:5000/api
+
+POST {{uri}}/signin
+Content-Type: application/json
+
+{
+  "email": "samuelhereira@gmail.com",
+  "password": "samuel99xd"
+}
