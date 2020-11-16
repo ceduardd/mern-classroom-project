@@ -1,23 +1,27 @@
-import jwt from 'jsonwebtoken';
+import User, { IUser } from '../models/userModel';
 import { RequestHandler } from 'express';
-import User from '../models/userModel';
-import { matchPassword, encryptPassword } from '../lib/bcrypt';
-import config from '../config';
 import asyncHandler from 'express-async-handler';
+import jwt from 'jsonwebtoken';
+
+import config from '../config';
+import { matchPassword, encryptPassword } from '../lib/bcrypt';
 
 export const signIn: RequestHandler = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const userFound: any = await User.findOne({ email });
+  // Check if the user exist
+  const userFound = await User.findOne({ email });
 
-  if (!userFound) return res.json({ message: 'email or password incorrect' });
+  if (!userFound) return res.json({ message: 'User not found' });
 
+  // Check is valid password
   const validPassword = await matchPassword(password, userFound.password);
 
   if (!validPassword)
-    return res.json({ message: 'email or password incorrect' });
+    return res.json({ message: 'Password provided is invalid' });
 
-  const token = jwt.sign({ id: userFound._id }, 'MERN_APP_SECRET', {
+  // Generating token
+  const token = jwt.sign({ id: userFound._id }, config.SECRET, {
     expiresIn: 86400,
   });
 
@@ -27,11 +31,13 @@ export const signIn: RequestHandler = asyncHandler(async (req, res) => {
 export const signUp: RequestHandler = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
+  // Check if the email is already in use
   const userFound = await User.findOne({ email });
 
-  if (userFound) return res.json({ message: 'email repetido' });
+  if (userFound) return res.json({ message: 'Email provided already exist' });
 
-  const newUser = new User({
+  // Saving new user
+  const newUser: IUser = new User({
     name,
     email,
     password: await encryptPassword(password),
@@ -39,7 +45,8 @@ export const signUp: RequestHandler = asyncHandler(async (req, res) => {
 
   const userSaved = await newUser.save();
 
-  const token = jwt.sign({ id: userSaved._id }, 'MERN_APP_SECRET', {
+  // Generating token
+  const token = jwt.sign({ id: userSaved._id }, config.SECRET, {
     expiresIn: 86400,
   });
 

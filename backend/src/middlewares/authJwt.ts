@@ -1,6 +1,7 @@
-import jwt from 'jsonwebtoken';
 import { RequestHandler } from 'express';
 import asyncHandler from 'express-async-handler';
+import jwt from 'jsonwebtoken';
+import config from '../config';
 
 export const verifyToken: RequestHandler = asyncHandler(
   async (req, res, next) => {
@@ -8,7 +9,7 @@ export const verifyToken: RequestHandler = asyncHandler(
 
     if (!token) return res.status(403).json({ message: 'No token provided' });
 
-    const decoded = jwt.verify(token, 'MERN_APP_SECRET');
+    const decoded = jwt.verify(token, config.SECRET);
 
     console.log(decoded);
 

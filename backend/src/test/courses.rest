@@ -1,0 +1,11 @@
+@uri = http://localhost:4000/api/courses
+
+GET {{uri}}
+
+### UPDATE COURSE BY ID
+PUT {{uri}}/5fb0358bca6f0518bd237e7e
+Content-Type: application/json
+
+{
+  "description": "Librería de JavaScript creada por Facebook"
+}

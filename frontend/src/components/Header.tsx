@@ -4,7 +4,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 
 const Header = () => {
   return (
-    <header>
+    <header className="m-0">
       <Navbar bg="primary" variant="dark" expand="lg">
         <Container>
           <LinkContainer to="/">
@@ -15,7 +15,7 @@ const Header = () => {
             <Nav className="ml-auto">
               <LinkContainer to="/login">
                 <Nav.Link>
-                  <i className="fas fa-user mr-2"></i>Sign In
+                  <i className="fas fa-user mr-2"></i>Iniciar Sesión
                 </Nav.Link>
               </LinkContainer>
             </Nav>

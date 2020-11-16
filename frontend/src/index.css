@@ -1,3 +1,12 @@
 main {
   min-height: 80vh;
 }
+
+.slide {
+  height: 60vh;
+}
+
+.slide img {
+  object-fit: cover;
+  opacity: 0.8;
+}

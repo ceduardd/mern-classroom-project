@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 import CourseItem from '../components/CourseItem';
+import HomeCarousel from '../components/HomeCarousel';
 import Course from '../interfaces/Course';
 
 const CourseLists = () => {
@@ -10,7 +11,7 @@ const CourseLists = () => {
 
   useEffect(() => {
     const getCourses = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/courses');
+      const { data } = await axios.get('http://localhost:4000/api/courses');
       setCourses(data);
     };
 
@@ -19,15 +20,19 @@ const CourseLists = () => {
 
   return (
     <section>
-      <h1>Cursos disponibles</h1>
+      <HomeCarousel />
 
-      <Row>
-        {courses.map(course => (
-          <Col key={course._id} md={4}>
-            <CourseItem {...course} />
-          </Col>
-        ))}
-      </Row>
+      <Container>
+        <h1 className="my-4">Cursos disponibles</h1>
+
+        <Row>
+          {courses.map(course => (
+            <Col key={course._id} md={4}>
+              <CourseItem {...course} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </section>
   );
 };

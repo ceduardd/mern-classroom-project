@@ -7,6 +7,7 @@ import config from './config';
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     };
 
     const db = await mongoose.connect(config.MONGO_URI, connectionOptions);

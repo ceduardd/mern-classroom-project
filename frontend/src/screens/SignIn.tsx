@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
+import useForm from '../hooks/useForm';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+  const [values, changeValues, resetValues] = useForm({
+    email: '',
+    password: '',
+  });
+
+  const { email, password } = values;
 
   const signIn = async () => {
-    const { data } = await axios.post('http://localhost:5000/api/signin', {
+    const { data } = await axios.post('http://localhost:4000/api/signin', {
       email,
       password,
     });
@@ -21,16 +29,17 @@ const SignIn = () => {
     e.preventDefault();
 
     signIn();
+    resetValues();
   };
 
   return (
-    <section>
+    <section className="mt-4">
       <Row>
-        <Col md={4} className="mx-auto">
-          <Card className="mt-4 p-4">
+        <Col xs={10} md={6} lg={4} className="mx-auto">
+          <Card className="p-4">
             <Card.Title>
               <p className="text-center text-primary font-weight-bold h1">
-                Login
+                Iniciar Sesión
               </p>
             </Card.Title>
             <form onSubmit={handleSubmit}>
@@ -39,10 +48,10 @@ const SignIn = () => {
                   type="email"
                   name="email"
                   className="form-control"
-                  placeholder="Type your email..."
+                  placeholder="email@example.com"
                   autoComplete="off"
                   value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={changeValues}
                 />
               </div>
               <div className="form-group">
@@ -50,14 +59,14 @@ const SignIn = () => {
                   type="password"
                   name="password"
                   className="form-control"
-                  placeholder="Type your password..."
+                  placeholder="Contraseña"
                   autoComplete="off"
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={changeValues}
                 />
               </div>
               <Button type="submit" className="btn-block">
-                Sign In
+                Iniciar Sesión
               </Button>
             </form>
           </Card>
