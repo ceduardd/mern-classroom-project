@@ -4,7 +4,7 @@ import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 
 import config from '../config';
-import { matchPassword, encryptPassword } from '../lib/bcrypt';
+import { matchPassword, encryptPassword } from '../libs/bcrypt';
 
 export const signIn: RequestHandler = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -21,7 +21,7 @@ export const signIn: RequestHandler = asyncHandler(async (req, res) => {
     return res.json({ message: 'Password provided is invalid' });
 
   // Generating token
-  const token = jwt.sign({ id: userFound._id }, config.SECRET, {
+  const token = jwt.sign({ _id: userFound._id }, config.SECRET, {
     expiresIn: 86400,
   });
 
@@ -46,7 +46,7 @@ export const signUp: RequestHandler = asyncHandler(async (req, res) => {
   const userSaved = await newUser.save();
 
   // Generating token
-  const token = jwt.sign({ id: userSaved._id }, config.SECRET, {
+  const token = jwt.sign({ _id: userSaved._id }, config.SECRET, {
     expiresIn: 86400,
   });
 

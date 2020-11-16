@@ -1,11 +1,42 @@
 @uri = http://localhost:4000/api/courses
 
+### GET ALL COURSES
 GET {{uri}}
 
-### UPDATE COURSE BY ID
-PUT {{uri}}/5fb0358bca6f0518bd237e7e
+### GET COURSE BY ID
+GET {{uri}}/5fb0358bca6f0518bd237e7c
+
+### CREATE NEW COURSE
+POST {{uri}}/5fb0358bca6f0518bd237e7c
 Content-Type: application/json
+
+{
+    // payload example
+    "name": "Curso de Node",
+    "image": "/images/node.jpg",
+    "description": "Curso de introducción a Node",
+    "category": "Backend",
+    "lessons": [
+      {
+        "title": "Introducción al Curso",
+        "content": "Node.js es un entorno de ejecución de JavaScript",
+        "urlResource": "https://nodejs.org",
+      },
+    ],
+  },
+
+### UPDATE COURSE BY ID
+PUT {{uri}}/5fb2d6af97f99e21d12116ce
+Content-Type: application/json
+x-access-toke: 5fb2d6af97f99e21d12116ce
+
+{
+  "name": "Curso de Node.js"
+}
 
 {
   "description": "Librería de JavaScript creada por Facebook"
 }
+
+### DELETE COURSE BY ID
+DELETE  {{uri}}/5fb0358bca6f0518bd237e7e

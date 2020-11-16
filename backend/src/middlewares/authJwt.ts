@@ -3,15 +3,23 @@ import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import config from '../config';
 
+interface IPayload {
+  _id: string;
+  iat: number;
+  exp: number;
+}
+
 export const verifyToken: RequestHandler = asyncHandler(
   async (req, res, next) => {
-    const token: any = req.headers['x-access-token'];
+    const token = req.header('x-access-token');
 
     if (!token) return res.status(403).json({ message: 'No token provided' });
 
-    const decoded = jwt.verify(token, config.SECRET);
+    const payload = jwt.verify(token, config.SECRET) as IPayload;
 
-    console.log(decoded);
+    // console.log(payload);
+
+    req.userId = payload._id;
 
     next();
   }

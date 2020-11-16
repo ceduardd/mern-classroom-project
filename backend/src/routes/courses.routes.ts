@@ -1,16 +1,14 @@
 import { Router } from 'express';
+const router = Router();
+
 import * as coursesCtrl from '../controllers/courses.controller';
 
 import { verifyToken } from '../middlewares/authJwt';
 
-const router = Router();
-
-const someFunction = () => {};
-
-router.get('/courses', coursesCtrl.getCourses);
-router.get('/courses/:id', coursesCtrl.getCourseById);
-router.post('/courses', verifyToken, coursesCtrl.createCourse);
-router.put('/courses/:id', coursesCtrl.updateCourseById);
-router.get('/', someFunction);
+router.get('/', coursesCtrl.getCourses);
+router.get('/:courseId', coursesCtrl.getCourseById);
+router.post('/', verifyToken, coursesCtrl.createCourse);
+router.put('/:courseId', verifyToken, coursesCtrl.updateCourseById);
+router.delete('/:courseId', verifyToken, coursesCtrl.deleteCourseById);
 
 export default router;
