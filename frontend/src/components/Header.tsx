@@ -10,7 +10,7 @@ const Header = () => {
     <header className="m-0">
       <Navbar bg="primary" variant="dark" expand="lg">
         <Container>
-          <LinkContainer to="/">
+          <LinkContainer to={loginState?.isLogged ? '/home' : '/'}>
             <Navbar.Brand>Classroom App</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

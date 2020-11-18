@@ -4,7 +4,7 @@
 GET {{uri}}
 
 ### GET COURSE BY ID
-GET {{uri}}/5fb0358bca6f0518bd237e7c
+GET {{uri}}/5fb2d6af97f99e21d12116d2
 
 ### CREATE NEW COURSE
 POST {{uri}}/5fb0358bca6f0518bd237e7c
@@ -26,16 +26,19 @@ Content-Type: application/json
   },
 
 ### UPDATE COURSE BY ID
-PUT {{uri}}/5fb2d6af97f99e21d12116ce
+PUT {{uri}}/5fb2d6af97f99e21d12116d2
 Content-Type: application/json
-x-access-toke: 5fb2d6af97f99e21d12116ce
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmIyZDZhZjk3Zjk5ZTIxZDEyMTE2Y2EiLCJpYXQiOjE2MDU2Nzk0OTAsImV4cCI6MTYwNTc2NTg5MH0.Wv9tGlBnzbnWZD5rKeZE8KQDmMcHpzwKG1jwhFzwitw
 
 {
-  "name": "Curso de Node.js"
-}
-
-{
-  "description": "Librería de JavaScript creada por Facebook"
+  "lessons": [
+    {
+      "_id": "5fb2d6af97f99e21d12116d3",
+      "title": "Introducción al Curso",
+      "content": "The Progressive JavaScript Framework",
+      "urlResource": "https://vuejs.org"
+    },
+  ]
 }
 
 ### DELETE COURSE BY ID

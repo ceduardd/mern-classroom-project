@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 
-interface ILoginStatus {
+export interface ILoginStatus {
   isLogged: boolean;
   login: (token: string) => void;
   logout: () => void;
@@ -10,7 +10,7 @@ const existsToken = () =>
   localStorage.getItem('x-access-token') ? true : false;
 
 const LoginContext = createContext<ILoginStatus | null>(null);
-export const useLogin = () => useContext(LoginContext);
+export const useLogin = () => useContext<ILoginStatus | null>(LoginContext);
 
 const LoginProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [isLogged, setIsLogged] = useState(() => existsToken());

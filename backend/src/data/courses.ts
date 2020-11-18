@@ -10,6 +10,11 @@ const courses = [
         content: 'Node.js es un entorno de ejecución de JavaScript',
         urlResource: 'https://nodejs.org',
       },
+      {
+        title: 'Configurar el entorno de desarrollo',
+        content: 'Descargar Node y NPM + VSCode',
+        urlResource: 'https://vscode.org',
+      },
     ],
   },
   {
@@ -24,6 +29,11 @@ const courses = [
           'Una biblioteca de JavaScript para construir interfaces de usuario',
         urlResource: 'https://reactjs.org',
       },
+      {
+        title: 'Conceptos de React',
+        content: 'Aprende acerca de las propiedades y los tipos de componentes',
+        urlResource: 'https://reactjs.org',
+      },
     ],
   },
   {
@@ -35,6 +45,11 @@ const courses = [
       {
         title: 'Introducción al Curso',
         content: 'The Progressive JavaScript Framework',
+        urlResource: 'https://vuejs.org',
+      },
+      {
+        title: 'Características de Vue',
+        content: 'Vue usa typescript y su enfoque progresivo lo hace único',
         urlResource: 'https://vuejs.org',
       },
     ],

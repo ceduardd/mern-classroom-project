@@ -7,6 +7,7 @@ import SignUp from './screens/SignUp';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginProvider from './LoginProvider';
+import CourseScreen from './screens/CourseScreen';
 
 const ClassroomApp = () => {
   return (
@@ -18,6 +19,7 @@ const ClassroomApp = () => {
             <Route exact path="/" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/home" component={HomeScreen} />
+            <Route exact path="/courses/:courseId" component={CourseScreen} />
           </Switch>
         </main>
         <Footer />
