@@ -1,25 +1,26 @@
 import React from 'react';
 import axios from 'axios';
-import { Card, Row, Col, Button, Container } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-
 import { useForm } from '../hooks/useForm';
 import { useLogin } from '../LoginProvider';
 
-const SignIn = () => {
+const SignUp = () => {
   const loginState = useLogin();
 
-  const history = useHistory();
-
   const [values, changeValues, resetValues] = useForm({
+    name: '',
     email: '',
     password: '',
   });
 
-  const { email, password } = values;
+  const { name, email, password } = values;
 
-  const signIn = async () => {
-    const { data } = await axios.post('http://localhost:4000/api/auth/signin', {
+  const history = useHistory();
+
+  const signUp = async () => {
+    const { data } = await axios.post('http://localhost:4000/api/auth/signup', {
+      name,
       email,
       password,
     });
@@ -32,7 +33,7 @@ const SignIn = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signIn();
+    signUp();
     resetValues();
     history.push('/home');
   };
@@ -45,10 +46,21 @@ const SignIn = () => {
             <Card className="p-4">
               <Card.Title>
                 <p className="text-center text-primary font-weight-bold h1">
-                  Iniciar Sesión
+                  Registrarse
                 </p>
               </Card.Title>
               <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    className="form-control"
+                    placeholder="Nombre"
+                    autoComplete="off"
+                    value={name}
+                    onChange={changeValues}
+                  />
+                </div>
                 <div className="form-group">
                   <input
                     type="email"
@@ -72,7 +84,7 @@ const SignIn = () => {
                   />
                 </div>
                 <Button type="submit" className="btn-block">
-                  Iniciar Sesión
+                  Registrarse
                 </Button>
               </form>
             </Card>
@@ -83,4 +95,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

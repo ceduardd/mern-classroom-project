@@ -6,7 +6,7 @@ import CourseItem from '../components/CourseItem';
 import HomeCarousel from '../components/HomeCarousel';
 import Course from '../interfaces/Course';
 
-const CourseLists = () => {
+const HomeScreen = () => {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const CourseLists = () => {
   );
 };
 
-export default CourseLists;
+export default HomeScreen;
